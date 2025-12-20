@@ -26,7 +26,7 @@ session_start();
     }
 
     $chucvu = '';
-    if ($role == -1) die("Ko lay dc role");
+    // if ($role == -1) die("Ko lay dc role");
     switch ($role){
       case '1':
         $chucvu = 'Admin';

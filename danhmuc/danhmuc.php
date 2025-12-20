@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/nv.css">
     <title>Danh mục</title>
 </head>
 <body>
@@ -41,7 +42,8 @@
                 <td><?php echo $tendm[$i] ?></td>
                 <td> 
                     <a href="danhmuc_edit.php?madm=<?php echo $madm[$i] ?>">Sửa</a> |
-                    <a href="danhmuc_del.php?madm=<?php echo $madm[$i] ?>">Xóa</a>
+                    <a href="danhmuc_del.php?madm=<?php echo $madm[$i]; ?>" 
+                       onclick="return confirm('Bạn có chắc muốn xóa danh mục này?')">Xóa</a>
                 </td>
             </tr>
         <?php

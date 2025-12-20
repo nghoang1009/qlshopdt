@@ -49,7 +49,8 @@
                 <td><?php echo $ns[$i] ?></td>
                 <td> 
                     <a href="nhanvien_edit.php?manv=<?php echo $manv[$i] ?>">Sửa</a> |
-                    <a href="nhanvien_del.php?manv=<?php echo $manv[$i] ?>">Xóa</a>
+                    <a href="nhanvien_del.php?manv=<?php echo $manv[$i]; ?>" 
+                       onclick="return confirm('Bạn có chắc muốn xóa nhân viên này?')">Xóa</a>
                 </td>
             </tr>
         <?php

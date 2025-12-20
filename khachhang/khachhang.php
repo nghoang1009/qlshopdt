@@ -46,7 +46,8 @@
                 <td><?php echo $sdt[$i] ?></td>
                 <td> 
                     <a href="khachhang_edit.php?makh=<?php echo $makh[$i] ?>">Sửa</a> |
-                    <a href="khachhang_del.php?makh=<?php echo $makh[$i] ?>">Xóa</a>
+                    <a href="khachhang_del.php?makh=<?php echo $makh[$i]; ?>" 
+                       onclick="return confirm('Bạn có chắc muốn xóa khách hàng này?')">Xóa</a>
                 </td>
             </tr>
         <?php
