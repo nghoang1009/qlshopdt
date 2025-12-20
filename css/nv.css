@@ -1,0 +1,174 @@
+/* Tổng thể */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f4f4f4;
+  padding: 20px 0;
+}
+
+/* Tiêu đề trang */
+h1 {
+  color: rgb(8, 43, 82);
+  text-align: center;
+  margin: 20px 0;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h2 {
+  text-align: center;
+  margin: 15px 0 30px 0;
+}
+
+h2 a {
+  background: rgb(8, 43, 82);
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+h2 a:hover {
+  background: rgb(10, 55, 105);
+}
+
+/* Bảng danh sách */
+table {
+  background: white;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
+
+table th {
+  background: rgb(8, 43, 82);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #ddd;
+}
+
+table td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #f0f0f0;
+}
+
+/* Link trong bảng */
+table a {
+  color: rgb(8, 43, 82);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table a:hover {
+  color: #0066cc;
+}
+
+/* Nút thêm nhân viên */
+table th a {
+  background: white;
+  color: rgb(8, 43, 82);
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+table th a:hover {
+  background: #ffed4a;
+  color: rgb(8, 43, 82);
+}
+
+/* Hàng tổng số */
+table tr:last-child td {
+  background: #e8f4f8;
+  font-weight: bold;
+  color: rgb(8, 43, 82);
+}
+
+/* Form thêm/sửa */
+form table {
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+form table tr:first-child td {
+  background: rgb(8, 43, 82);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 15px;
+  text-align: center;
+}
+
+form table td {
+  padding: 12px 15px;
+}
+
+form table td:first-child {
+  font-weight: bold;
+  color: rgb(8, 43, 82);
+  width: 180px;
+  background: #f8f9fa;
+}
+
+/* Input */
+form input[type="text"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+form input[type="text"]:focus,
+form input[type="date"]:focus {
+  border-color: rgb(8, 43, 82);
+  outline: none;
+}
+
+/* Nút submit và reset */
+form input[type="submit"],
+form input[type="reset"] {
+  background: rgb(8, 43, 82);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+}
+
+form input[type="submit"]:hover {
+  background: rgb(10, 55, 105);
+}
+
+form input[type="reset"] {
+  background: #6c757d;
+}
+
+form input[type="reset"]:hover {
+  background: #5a6268;
+}

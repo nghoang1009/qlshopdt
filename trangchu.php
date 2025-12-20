@@ -101,7 +101,7 @@ session_start();
 
 <!-- Nút giỏ hàng float -->
 <div class="cart-float">
-  <a href="giohang.php">
+  <a href="./giohang/giohang.php">
     <i class="fa fa-shopping-cart"></i>
     <span class="cart-count">0</span>
   </a>

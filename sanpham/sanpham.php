@@ -1,8 +1,12 @@
+<?php 
+session_start(); // THÊM DÒNG NÀY ĐỂ GIỎ HÀNG HOẠT ĐỘNG
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/nv.css">
     <title>Sản phẩm</title>
 </head>
 <body>
@@ -58,8 +62,9 @@
             <th>Hình ảnh</th>
             <th>Ghi chú</th>
             <th>Danh mục</th>
-            <th><a href="sanpham_add.php">Thêm sản phẩm</a></th>
+            <th width = "180"><a href="sanpham_add.php">Thêm sản phẩm</a></th>
             <th>Thông số sản phẩm</th>
+            <th>Thêm vào giỏ hàng</th>
         </tr>
 
         <?php
@@ -78,17 +83,21 @@
                 <td><?php echo $tendm[$i] ?></td>
                 <td> 
                     <a href="sanpham_edit.php?masp=<?php echo $masp[$i] ?>">Sửa</a> |
-                    <a href="sanpham_del.php?masp=<?php echo $masp[$i] ?>">Xóa</a>
+                    <a href="sanpham_del.php?masp=<?php echo $masp[$i]; ?>" 
+                       onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?')">Xóa</a>
                 </td>
                 <td>
                     <a href="../thongso/thongso.php?masp=<?php echo $masp[$i] ?>">Xem thông số</a>
+                </td>
+                <td>
+                    <a href="../giohang/giohang_add.php?masp=<?php echo $masp[$i] ?>">Thêm vào giỏ hàng</a>
                 </td>
             </tr>
         <?php
         }
 	  ?>
       <tr>
-      <td colspan="11" align="right">Bảng có <?php echo $tong_bg?> sản phẩm</td>
+      <td colspan="12" align="right">Bảng có <?php echo $tong_bg?> sản phẩm</td>
       </tr>
     </table>
 </body>

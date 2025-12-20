@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/nv.css">
     <title>Sản phẩm</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
             <th width = 250>Tên thông số</th>
             <th>Mã sản phẩm</th>
             <th>Giá trị</th>
-            <th><a href="thongso_add.php" width = 100>Thêm thông số</a></th>
+            <th width = 180><a href="thongso_add.php" width = 100>Thêm thông số</a></th>
         </tr>
 
         <?php
