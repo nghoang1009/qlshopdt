@@ -9,6 +9,7 @@ session_start();
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/avt.css">
     <link rel="stylesheet" href="css/giohang.css">
+    <link rel="stylesheet" href="css/sp.css">
 </head>
 <body>
 
@@ -105,6 +106,47 @@ session_start();
     <i class="fa fa-shopping-cart"></i>
     <span class="cart-count">0</span>
   </a>
+</div>
+
+<div class="product-section">
+  <div class="container">
+      <h2 class="section-title">SẢN PHẨM NỔI BẬT</h2>
+      
+      <div class="product-grid">
+          <?php
+          $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+          $sql = "SELECT * FROM sanpham ORDER BY masp DESC LIMIT 12";
+          $result = mysqli_query($conn, $sql);
+          
+          if ($result && mysqli_num_rows($result) > 0) {
+              while($row = mysqli_fetch_assoc($result)) {
+                  $masp = $row['masp'];
+                  $tensp = $row['tensp'];
+                  $gia = number_format($row['gia'], 0, ',', '.');
+                  $hinhanh = isset($row['hinhanh']) && !empty($row['hinhanh']) 
+                            ? 'img/' . $row['hinhanh'] 
+                            : 'img/default.jpg';
+          ?>
+              <div class="product-card">
+                  <div class="product-badge">Hot</div>
+                  <div class="product-image-wrapper">
+                      <img src="<?php echo $hinhanh; ?>" alt="<?php echo $tensp; ?>" class="product-image">
+                  </div>
+                  <div class="product-info">
+                      <div class="product-name"><?php echo $tensp; ?></div>
+                      <div class="product-price"><?php echo $gia; ?>đ</div>
+                      <a href="thongso/thongso.php?masp=<?php echo $masp; ?>" class="product-btn">Xem chi tiết</a>
+                  </div>
+              </div>
+          <?php
+              }
+          } else {
+              echo '<p style="text-align:center; width:100%; padding:20px;">Chưa có sản phẩm nào!</p>';
+          }
+          mysqli_close($conn);
+          ?>
+      </div>
+  </div>
 </div>
 </body>
 </html>
