@@ -133,6 +133,8 @@ form table td:first-child {
 
 /* Input */
 form input[type="text"],
+form input[type="password"],
+form input[type="number"],
 form input[type="date"] {
   width: 100%;
   padding: 10px;
@@ -142,6 +144,8 @@ form input[type="date"] {
 }
 
 form input[type="text"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
 form input[type="date"]:focus {
   border-color: rgb(8, 43, 82);
   outline: none;
