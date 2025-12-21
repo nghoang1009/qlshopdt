@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">THÊM THÔNG SỐ</h1>
     <?php 
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
         $sql_select = "Select * from sanpham";
@@ -70,6 +71,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='thongso.php'">
             </td>
             </tr>
         </table>

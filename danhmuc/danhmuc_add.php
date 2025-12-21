@@ -7,10 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">THÊM DANH MỤC</h1>
     <form method="post" action="danhmuc_insert.php" enctype="multipart/form-data">        
         <table align="center" border="1">
             <tr>
-                <td colspan="2" align="center">Thêm danh mục</td>
+                <td colspan="2" align="center">Thông tin danh mục</td>
             </tr>
             <tr>
                 <td>Tên danh mục</td>
@@ -23,6 +24,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='danhmuc.php'">
             </td>
             </tr>
         </table>

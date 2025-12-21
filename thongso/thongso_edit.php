@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">THÔNG SỐ SẢN PHẨM</h1>
     <?php  
         $masp = $_REQUEST["masp"];
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
@@ -74,6 +75,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='thongso.php'">
             </td>
             </tr>
         </table>

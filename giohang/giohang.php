@@ -15,7 +15,7 @@ session_start();
     
     <?php
         if (!isset($_SESSION['username'])) {
-            echo "<p align='center'>Vui lòng <a href='login.php'>đăng nhập</a> để xem giỏ hàng</p>";
+            echo "<p align='center'>Vui lòng <a href='../login.php'>đăng nhập</a> để xem giỏ hàng</p>";
             exit();
         }
 

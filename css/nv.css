@@ -135,7 +135,10 @@ form table td:first-child {
 form input[type="text"],
 form input[type="password"],
 form input[type="number"],
-form input[type="date"] {
+form input[type="date"],
+form input[type="file"],
+select
+{
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -153,7 +156,9 @@ form input[type="date"]:focus {
 
 /* Nút submit và reset */
 form input[type="submit"],
-form input[type="reset"] {
+form input[type="reset"],
+form input[type="button"]
+{
   background: rgb(8, 43, 82);
   color: white;
   border: none;

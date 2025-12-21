@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">SỬA DANH MỤC</h1>
     <?php
         $madm = $_REQUEST["madm"];
         $conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
@@ -37,6 +38,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='danhmuc.php'">
             </td>
             </tr>
         </table>

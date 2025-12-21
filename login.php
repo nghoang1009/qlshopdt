@@ -7,6 +7,7 @@
     <title>Đăng nhập</title>
 </head>
 <body>
+    <h2 align = "center"> <a href="trangchu.php">TRANG CHỦ</a></h2>
     <form action="login_check.php" method="POST">
         <table border="1" align="center">
             <tr>

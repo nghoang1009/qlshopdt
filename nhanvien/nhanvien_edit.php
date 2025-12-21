@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">SỬA NHÂN VIÊN</h1>
     <?php
         $manv = $_REQUEST["manv"];
         $conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
@@ -27,7 +28,7 @@
         <form action="nhanvien_insert.php" method="post" enctype="multipart/form-data">
         <table border="1" align="center">
             <tr>
-                <td colspan="2" align="center">Thêm nhân viên</td>
+                <td colspan="2" align="center">Thông tin nhân viên</td>
             </tr>
             <tr>
                 <td>Tên nhân viên:</td>
@@ -61,6 +62,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='nhanvien.php'">
                 </td>
             </tr>
         </table>

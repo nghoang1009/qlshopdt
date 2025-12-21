@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h1 align = "center">THÊM KHÁCH HÀNG</h1>
     <?php
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
         $sql_select = "Select * from `khachhang`";
@@ -27,7 +28,7 @@
     <form action="khachhang_insert.php" method="post" enctype="multipart/form-data">
         <table border="1" align="center">
             <tr>
-                <td colspan="2" align="center">Thêm khách hàng</td>
+                <td colspan="2" align="center">Thông tin khách hàng</td>
             </tr>
             <tr>
                 <td>Tên khách hàng:</td>
@@ -51,6 +52,7 @@
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='khachhang.php'">
                 </td>
             </tr>
         </table>

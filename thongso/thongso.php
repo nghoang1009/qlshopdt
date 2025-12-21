@@ -8,11 +8,14 @@
 </head>
 <body>
     <h1 align = "center">THÔNG SỐ SẢN PHẨM</h1>
-    <h2 align = "center"><a href="../trangchu.php">Trang chủ</a></h2>
-    <?php  
+    <h2 align = "center"><a href="../trangchu.php">TRANG CHỦ</a></h2>
+    <?php 
         $masp = $_REQUEST["masp"];
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
-        $sql_select = "Select * from `thongso` where masp='$masp'";
+        $sql_select = "Select ts.mats, ts.tents, ts.giatri, sp.tensp, ts.masp
+                       from thongso ts
+                       join sanpham sp
+                       on ts.masp = sp.masp";  
         $result = mysqli_query($conn,$sql_select);
         $tong_bg_ts=mysqli_num_rows($result);
 
@@ -23,6 +26,7 @@
             $mats[$stt] = $row->mats;
             $tents[$stt] = $row->tents;
             $giatri[$stt] = $row->giatri;
+            $tensp[$stt] = $row->tensp;
         }
     ?>
 
@@ -30,7 +34,7 @@
         <tr>
             <th>STT</th>
             <th width = 250>Tên thông số</th>
-            <th>Mã sản phẩm</th>
+            <th>Tên sản phẩm</th>
             <th>Giá trị</th>
             <th width = 180><a href="thongso_add.php" width = 100>Thêm thông số</a></th>
         </tr>
@@ -42,7 +46,7 @@
             <tr align="center">
                 <td><?php echo $i; ?></td>
                 <td><?php echo $tents[$i] ?></td>
-                <td><?php echo $masp ?></td>
+                <td><?php echo $tensp[$i] ?></td>
                 <td><?php echo $giatri[$i] ?></td>
                 <td> 
                     <a href="thongso_edit.php?mats=<?php echo $mats[$i] ?>&masp=<?php echo $masp ?>">Sửa</a> |

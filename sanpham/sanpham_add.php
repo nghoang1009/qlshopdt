@@ -7,7 +7,8 @@
     <title>Thêm sản phẩm</title>
 </head>
 <body>
-    <?php  
+    <h1 align = "center">THÊM SẢN PHẨM</h1>
+    <?php
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
         $sql_select = "Select * from `sanpham`";
         
@@ -45,7 +46,25 @@
     <form action="sanpham_insert.php" method="post" enctype="multipart/form-data">
         <table align="center" border="1">
             <tr>
-                <td colspan="2" align="center">Thêm sản phẩm</td>
+                <td colspan="2" align="center">Thông tin sản phẩm</td>
+            </tr>
+            <tr>
+                <td>Danh mục</td>
+                <td>
+                <select name="txt_madm">
+                    <option value="0">--Chọn danh mục--</option>
+                    <?php
+                    for ($i=1; $i<=$tong_dm; $i++)
+                    {
+                    ?>
+                        <option value="<?php echo $madm[$i] ?>">
+                            <?php echo $tendm[$i]?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </td>
             </tr>
             <tr>
                 <td>Tên sản phẩm</td>
@@ -62,7 +81,7 @@
             <tr>
                 <td>Số lượng</td>
                 <td>
-                    <input type="numvber" name="num_sl">
+                    <input type="number" name="num_sl">
                 </td>
             </tr>
             <tr>
@@ -90,27 +109,10 @@
                 </td>
             </tr>
             <tr>
-                <td>Mã danh mục</td>
-                <td>
-                <select name="txt_madm">
-                    <option value="0">--Chọn danh mục--</option>
-                    <?php
-                    for ($i=1; $i<=$tong_dm; $i++)
-                    {
-                    ?>
-                        <option value="<?php echo $madm[$i] ?>">
-                            <?php echo $tendm[$i]?>
-                        </option>
-                    <?php
-                    }
-                    ?>
-                </select>
-            </td>
-            </tr>
-            <tr>
                 <td colspan="2" align="center">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
+                <input type="button" value="Quay lại" onclick="window.location.href='sanpham.php'">
             </td>
             </tr>
         </table>
