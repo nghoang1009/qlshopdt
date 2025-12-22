@@ -51,8 +51,11 @@ session_start();
       </div>
 
       <div class="search-box">
-        <input type="text" placeholder="Tìm kiếm sản phẩm...">
-        <button><i class="fa fa-search"></i></button>
+        <form method="GET" action="trangchu.php" style="display: flex; width: 100%;">
+          <input type="text" name="search" placeholder="Tìm kiếm sản phẩm..." 
+                 value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
       </div>
 
       <div class="user-actions">
@@ -67,7 +70,7 @@ session_start();
                 <span><?php echo $chucvu ?></span>
               </div>
               <a href="profile.php">Thông tin cá nhân</a>
-              <a href="orders.php">Đơn hàng của tôi</a>
+              <a href="donhang/donhang.php">Đơn hàng của tôi</a>
               <a href="settings.php">Cài đặt</a>
               <a href="logout.php" class="logout">Đăng xuất</a>
             </div>
@@ -90,10 +93,10 @@ session_start();
         <li><a href="sanpham/sanpham.php"><i class="fa fa-mobile-screen"></i> Điện thoại</a></li>
         <li><a href="danhmuc/danhmuc.php"><i class="fa fa-tablet-screen-button"></i> Danh mục</a></li>
         <li><a href="nhanvien/nhanvien.php"><i class="fa fa-laptop"></i> Nhân viên</a></li>
-        <li><a href="#"><i class="fa fa-tv"></i> Giao hàng</a></li>
         <li><a href="khachhang/khachhang.php"><i class="fa fa-headphones"></i> Khách hàng</a></li>
-        <li><a href="#"><i class="fa fa-clock"></i> Đồng hồ</a></li>
-        <li><a href="#"><i class="fa fa-wrench"></i> Giỏ hàng</a></li>
+        <li><a href="donhang/donhang.php"><i class="fa fa-headphones"></i> Đơn hàng</a></li>
+        <li><a href="#"><i class="fa fa-tv"></i> Giao hàng</a></li>
+        <li><a href="giohang/giohang.php"><i class="fa fa-wrench"></i> Giỏ hàng</a></li>
       </ul>
     </nav>
 
@@ -110,12 +113,32 @@ session_start();
 
 <div class="product-section">
   <div class="container">
-      <h2 class="section-title">SẢN PHẨM NỔI BẬT</h2>
+      <h2 class="section-title">
+        <?php 
+          if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+              echo 'KẾT QUẢ TÌM KIẾM: "' . htmlspecialchars($_GET['search']) . '"';
+          } else {
+              echo 'SẢN PHẨM NỔI BẬT';
+          }
+        ?>
+      </h2>
       
       <div class="product-grid">
           <?php
           $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
-          $sql = "SELECT * FROM sanpham ORDER BY masp DESC LIMIT 12";
+          
+          // Xử lý tìm kiếm
+          if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+              $search = mysqli_real_escape_string($conn, trim($_GET['search']));
+              $sql = "SELECT * FROM sanpham 
+                      WHERE tensp LIKE '%$search%' 
+                         OR hang LIKE '%$search%' 
+                         OR ghichu LIKE '%$search%'
+                      ORDER BY masp DESC";
+          } else {
+              $sql = "SELECT * FROM sanpham ORDER BY masp DESC LIMIT 12";
+          }
+          
           $result = mysqli_query($conn, $sql);
           
           if ($result && mysqli_num_rows($result) > 0) {
@@ -141,7 +164,7 @@ session_start();
           <?php
               }
           } else {
-              echo '<p style="text-align:center; width:100%; padding:20px;">Chưa có sản phẩm nào!</p>';
+              echo '<p style="text-align:center; width:100%; padding:20px;">Không tìm thấy sản phẩm nào!</p>';
           }
           mysqli_close($conn);
           ?>

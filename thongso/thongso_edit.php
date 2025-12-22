@@ -9,16 +9,26 @@
 <body>
     <h1 align = "center">THÔNG SỐ SẢN PHẨM</h1>
     <?php  
-        $masp = $_REQUEST["masp"];
+        $mats = $_REQUEST["mats"];
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
-        $sql_select = "Select * from `thongso` where masp='$masp'";
+        $sql_select = "Select * from `thongso` where mats='$mats'";
         $result = mysqli_query($conn,$sql_select);
         $tong_bg_ts=mysqli_num_rows($result);
 
         $row = mysqli_fetch_object($result);
-        $mats = $row->mats;
-        $tents = $row->tents;
-        $giatri = $row->giatri;
+        
+        // Sửa lỗi: Kiểm tra $row trước khi truy xuất thuộc tính
+        if ($row) {
+            $mats = $row->mats;
+            $tents = $row->tents;
+            $giatri = $row->giatri;
+            $masp = $row->masp;
+        } else {
+            $mats = "";
+            $tents = "";
+            $giatri = "";
+            $masp = "";
+        }
 
         $sql_get_SP = "Select masp, tensp from sanpham";
         $result = mysqli_query($conn, $sql_get_SP);
@@ -35,7 +45,7 @@
     <form method="post" action="thongso_edit_save.php" enctype="multipart/form-data">        
         <table align="center" border="1">
             <tr>
-                <td colspan="2" align="center">Thêm danh mục</td>
+                <td colspan="2" align="center">Sửa thông số</td>
             </tr>
             <tr>
                 <td>Tên thông số</td>
@@ -54,7 +64,7 @@
                     for ($i=1; $i<=$tong_bg; $i++)
                     {
                     ?>
-                        <option value="<?php echo $idsp[$i] ?>">
+                        <option value="<?php echo $idsp[$i] ?>" <?php if($idsp[$i] == $masp) echo 'selected'; ?>>
                             <?php echo $tensp[$i]?>
                         </option>
                     <?php
@@ -73,9 +83,10 @@
             
             <tr>
                 <td colspan="2" align="center">
+                <input type="hidden" name="mats" value="<?php echo $mats ?>">
                 <input type="submit" value="OK">
                 <input type="reset" value="Reset">
-                <input type="button" value="Quay lại" onclick="window.location.href='thongso.php'">
+                <input type="button" value="Quay lại" onclick="window.location.href='thongso.php?masp=<?php echo $masp ?>'">
             </td>
             </tr>
         </table>

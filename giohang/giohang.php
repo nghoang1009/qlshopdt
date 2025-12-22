@@ -140,7 +140,7 @@ session_start();
             <td colspan="8" align="center">
                 <a href="../sanpham/sanpham.php">Tiếp tục mua hàng</a> | 
                 <a href="giohang_clear.php" onclick="return confirm('Bạn có chắc muốn xóa toàn bộ giỏ hàng?')">Xóa giỏ hàng</a> |
-                <a href="donhang_create.php">Đặt hàng</a>
+                <a href="../donhang/donhang_create.php">Đặt hàng</a>
             </td>
         </tr>
     </table>

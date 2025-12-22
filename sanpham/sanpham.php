@@ -35,20 +35,6 @@ session_start(); // THÊM DÒNG NÀY ĐỂ GIỎ HÀNG HOẠT ĐỘNG
             $madm[$stt] = $row->madm;
             $tendm[$stt] = $row->tendm;
         }
-
-        $sql_select_ts = "Select * from `thongso`";
-        $result_ts = mysqli_query($conn,$sql_select_ts);
-        $tong_bg_ts=mysqli_num_rows($result_ts);
-
-        $stt_ts = 0;
-        while($row = mysqli_fetch_object($result_ts))
-        {
-            $stt_ts++;
-            $mats[$stt_ts] = $row->mats;
-            $tents[$stt_ts] = $row->tents;
-            $masp[$stt_ts] = $row->masp;
-            $giatri[$stt_ts] = $row->giatri;
-        }
     ?>
 
     <table width = 1300 align="center" border="1">

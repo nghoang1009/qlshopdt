@@ -12,10 +12,13 @@
     <?php 
         $masp = $_REQUEST["masp"];
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+        
+        // Thêm WHERE để lọc theo masp
         $sql_select = "Select ts.mats, ts.tents, ts.giatri, sp.tensp, ts.masp
                        from thongso ts
                        join sanpham sp
-                       on ts.masp = sp.masp";  
+                       on ts.masp = sp.masp
+                       WHERE ts.masp = '$masp'";  
         $result = mysqli_query($conn,$sql_select);
         $tong_bg_ts=mysqli_num_rows($result);
 
@@ -33,10 +36,10 @@
     <table width = 1300 align="center" border="1">
         <tr>
             <th>STT</th>
-            <th width = 250>Tên thông số</th>
+            <th>Tên thông số</th>
             <th>Tên sản phẩm</th>
-            <th>Giá trị</th>
-            <th width = 180><a href="thongso_add.php" width = 100>Thêm thông số</a></th>
+            <th width = 700>Giá trị</th>
+            <th width = 180><a href="thongso_add.php?masp=<?php echo $masp ?>">Thêm thông số</a></th>
         </tr>
 
         <?php
@@ -45,8 +48,8 @@
         ?>
             <tr align="center">
                 <td><?php echo $i; ?></td>
-                <td><?php echo $tents[$i] ?></td>
                 <td><?php echo $tensp[$i] ?></td>
+                <td><?php echo $tents[$i] ?></td>
                 <td><?php echo $giatri[$i] ?></td>
                 <td> 
                     <a href="thongso_edit.php?mats=<?php echo $mats[$i] ?>&masp=<?php echo $masp ?>">Sửa</a> |

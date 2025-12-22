@@ -7,21 +7,17 @@
 </head>
 <body>
     <?php
+    $mats = $_REQUEST["mats"];
+    $tents = $_REQUEST["txt_tents"];
     $masp = $_REQUEST["masp"];
-    $tensp = $_REQUEST["txt_tensp"];
-    $gia = $_REQUEST["num_gia"];
-    $sl = $_REQUEST["num_sl"];
-    $hang = $_REQUEST["txt_hang"];
-    $baohanh = $_REQUEST["txt_baohanh"];
-    $ghichu = $_REQUEST["txt_ghichu"];
-    $madm = $_REQUEST["txt_madm"];
+    $giatri = $_REQUEST["txt_giatri"];
 
     $conn=mysqli_connect("localhost","root","", "qlshopdienthoai") or die ("Không connect đc với máy chủ");
 
-    $sql_edit= "UPDATE `sanpham` SET `tensp` = '$tensp', `gia` = '$gia', `sl` = '$sl', `hang` = '$hang', `baohanh` = '$baohanh', `ghichu` = '$ghichu', `madm` = '$madm' WHERE `sanpham`.`masp` = $masp;";
+    $sql_edit= "UPDATE `thongso` SET `tents` = '$tents', `masp` = '$masp', `giatri` = '$giatri' WHERE `thongso`.`mats` = $mats;";
 
     mysqli_query($conn,$sql_edit) or die("Query unsucessful");
-    header("Location: sanpham.php");
+    header("Location: thongso.php?masp=$masp");
     ?>
 </body>
 </html>
