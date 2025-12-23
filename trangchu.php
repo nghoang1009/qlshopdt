@@ -96,7 +96,7 @@ session_start();
         <li><a href="nhanvien/nhanvien.php"><i class="fa fa-laptop"></i> Nhân viên</a></li>
         <li><a href="khachhang/khachhang.php"><i class="fa fa-headphones"></i> Khách hàng</a></li>
         <li><a href="donhang/donhang.php"><i class="fa fa-headphones"></i> Đơn hàng</a></li>
-        <li><a href="#"><i class="fa fa-truck"></i> Giao hàng</a></li>
+        <li><a href="vanchuyen/vanchuyen.php"><i class="fa fa-truck"></i> Giao hàng</a></li>
         <li><a href="giohang/giohang.php"><i class="fa fa-wrench"></i> Giỏ hàng</a></li>
       </ul>
     </nav>
