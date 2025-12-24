@@ -1,20 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-	$manv = $_REQUEST["manv"];
-	$conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
-    //Chọn CSDL để làm việc
-    mysqli_select_db($conn,"qlshopdienthoai") or die ("Không tìm thấy CSDL");
-    //Tạo câu truy vấn
-    $sql_del_tk="DELETE FROM taikhoan WHERE matk = $manv";
-    mysqli_query($conn,$sql_del_tk);
-	header("Location: nhanvien.php");
-	?>
-</body>
-</html>
+<?php
+session_start();
+
+// Kiểm tra đăng nhập
+if (!isset($_SESSION['username'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Kiểm tra quyền - Chỉ Admin
+$username = $_SESSION['username'];
+$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
+$result_role = mysqli_query($conn, $sql_role);
+$row_role = mysqli_fetch_assoc($result_role);
+$role = $row_role['role'];
+
+if ($role != 1) {
+    echo "<script>alert('Bạn không có quyền xóa nhân viên!'); window.location.href='nhanvien.php';</script>";
+    exit();
+}
+
+$manv = $_REQUEST["manv"];
+
+mysqli_select_db($conn, "qlshopdienthoai") or die("Không tìm thấy CSDL");
+
+$sql_del_tk = "DELETE FROM taikhoan WHERE matk = $manv";
+mysqli_query($conn, $sql_del_tk);
+header("Location: nhanvien.php");
+?>

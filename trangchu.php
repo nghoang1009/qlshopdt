@@ -15,13 +15,13 @@ session_start();
 <body>
 
 <?php
+$role = -1;
   if (isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $sql = "Select * from taikhoan Where tentk = '$username'";
     $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die ("Khong the ket noi CSDL");
     $result = mysqli_query($conn, $sql);
 
-    $role = -1;
     if ($result)
         while ($row = mysqli_fetch_assoc($result)) {
             $role = $row['role'];
@@ -91,13 +91,25 @@ session_start();
 
     <nav class="header-bottom">
       <ul class="nav-menu">
-        <li><a href="sanpham/sanpham.php"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại</a></li>
-        <li><a href="danhmuc/danhmuc.php"><i class="fa fa-tablet-screen-button"></i> Danh mục</a></li>
-        <li><a href="nhanvien/nhanvien.php"><i class="fa fa-laptop"></i> Nhân viên</a></li>
-        <li><a href="khachhang/khachhang.php"><i class="fa fa-headphones"></i> Khách hàng</a></li>
-        <li><a href="donhang/donhang.php"><i class="fa fa-headphones"></i> Đơn hàng</a></li>
+        <?php if($role == 1 || $role == 2) 
+          echo '<li><a href="sanpham/sanpham.php"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại</a></li>
+               <li><a href="danhmuc/danhmuc.php"><i class="fa fa-list"></i> Danh mục</a></li>
+               <li><a href="khachhang/khachhang.php"><i class="fa fa-user"></i> Khách hàng</a></li>' ?>
+        <?php if($role == 1) 
+          echo "<li><a href='nhanvien/nhanvien.php'><i class='fa fa-users'></i> Nhân viên</a></li>" ?>
+        <li><a href="donhang/donhang.php"><i class="fa fa-archive"></i> Đơn hàng</a></li>
         <li><a href="vanchuyen/vanchuyen.php"><i class="fa fa-truck"></i> Giao hàng</a></li>
-        <li><a href="giohang/giohang.php"><i class="fa fa-wrench"></i> Giỏ hàng</a></li>
+        <li><a href="giohang/giohang.php"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
+        <li><a href="thanhtoan/thanhtoan.php"><i class="fa fa-shopping-cart"></i>Thanh toán</a></li>
+
+        <li class="dropdown">
+          <a href="#"><i class="fa fa-archive"></i> Thống kê</a>
+          <ul class="dropdown-content">
+            <li><a href="thongke/thongke_doanhthu.php">Thống kê doanh thu</a></li>
+            <li><a href="thongke/thongke_khachhang.php">Thống kê khách hàng</a></li>
+            <li><a href="thongke/thongke_sanpham.php">Thống kê sản phẩm</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
 
@@ -158,7 +170,7 @@ session_start();
                   <div class="product-info">
                       <div class="product-name"><?php echo $tensp; ?></div>
                       <div class="product-price"><?php echo $gia; ?>đ</div>
-                      <a href="thongso/thongso.php?masp=<?php echo $masp; ?>" class="product-btn">Xem chi tiết</a>
+                      <a href="chitietsanpham.php?masp=<?php echo $masp; ?>" class="product-btn">Xem chi tiết</a>
                   </div>
               </div>
           <?php

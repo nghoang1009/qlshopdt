@@ -1,22 +1,42 @@
+<?php
+session_start();
+
+// Kiểm tra đăng nhập
+if (!isset($_SESSION['username'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Kiểm tra quyền - Chỉ Admin
+$username = $_SESSION['username'];
+$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
+$result_role = mysqli_query($conn, $sql_role);
+$row_role = mysqli_fetch_assoc($result_role);
+$role = $row_role['role'];
+
+if ($role != 1) {
+    echo "<script>alert('Bạn không có quyền thêm nhân viên!'); window.location.href='nhanvien.php';</script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/nv.css">
-    <title>Document</title>
+    <title>Thêm nhân viên</title>
 </head>
 <body>
-    <h1 align = "center">THÊM NHÂN VIÊN</h1>
+    <h1 align="center">THÊM NHÂN VIÊN</h1>
     <?php
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
-        $sql_select = "Select * from `nhanvien`";
-        $result = mysqli_query($conn,$sql_select);
+        $sql_select = "SELECT * FROM `nhanvien`";
+        $result = mysqli_query($conn, $sql_select);
         $tong = mysqli_num_rows($result);
 
         $stt = 0;
-        while($row = mysqli_fetch_object($result))
-        {
+        while($row = mysqli_fetch_object($result)) {
             $stt++;
             $manv[$stt] = $row->manv;
             $tennv[$stt] = $row->tennv;

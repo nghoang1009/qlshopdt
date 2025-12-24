@@ -50,7 +50,7 @@
             </tr>
             <tr>
                 <td>Danh mục</td>
-                <td>
+                <td> 
                 <select name="txt_madm">
                     <option value="0">--Chọn danh mục--</option>
                     <?php

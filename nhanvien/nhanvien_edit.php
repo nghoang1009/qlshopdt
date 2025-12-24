@@ -1,19 +1,40 @@
+<?php
+session_start();
+
+// Kiểm tra đăng nhập
+if (!isset($_SESSION['username'])) {
+    header("Location: ../login.php");
+    exit();
+}
+
+// Kiểm tra quyền - Chỉ Admin
+$username = $_SESSION['username'];
+$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
+$result_role = mysqli_query($conn, $sql_role);
+$row_role = mysqli_fetch_assoc($result_role);
+$role = $row_role['role'];
+
+if ($role != 1) {
+    echo "<script>alert('Bạn không có quyền sửa nhân viên!'); window.location.href='nhanvien.php';</script>";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/nv.css">
-    <title>Document</title>
+    <title>Sửa nhân viên</title>
 </head>
 <body>
-    <h1 align = "center">SỬA NHÂN VIÊN</h1>
+    <h1 align="center">SỬA NHÂN VIÊN</h1>
     <?php
         $manv = $_REQUEST["manv"];
-        $conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
-        //Chọn CSDL để làm việc
-        mysqli_select_db($conn,"qlshopdienthoai") or die ("Không tìm thấy CSDL");
-        $sql_select = "Select * from `nhanvien` where `manv` = '$manv'";
+        
+        mysqli_select_db($conn, "qlshopdienthoai") or die("Không tìm thấy CSDL");
+        $sql_select = "SELECT * FROM `nhanvien` WHERE `manv` = '$manv'";
         $result = mysqli_query($conn, $sql_select);
         $row = mysqli_fetch_object($result);
 
@@ -24,8 +45,7 @@
         $ns = $row->ns;
     ?>
 
-    <form method="post" action="nhanvien_edit_save.php?manv= <?php echo $manv?>" enctype="multipart/form-data">        
-        <form action="nhanvien_insert.php" method="post" enctype="multipart/form-data">
+    <form method="post" action="nhanvien_edit_save.php?manv=<?php echo $manv; ?>" enctype="multipart/form-data">        
         <table border="1" align="center">
             <tr>
                 <td colspan="2" align="center">Thông tin nhân viên</td>
@@ -33,29 +53,25 @@
             <tr>
                 <td>Tên nhân viên:</td>
                 <td>
-                    <input type="text" name="txt_tennv"
-                    value="<?php echo $tennv ?>">
+                    <input type="text" name="txt_tennv" value="<?php echo $tennv; ?>">
                 </td>
             </tr>
             <tr>
                 <td>Địa chỉ:</td>
                 <td>
-                    <input type="text" name="txt_diachi"
-                    value="<?php echo $diachi ?>">
+                    <input type="text" name="txt_diachi" value="<?php echo $diachi; ?>">
                 </td>
             </tr>
             <tr>
                 <td>Ngày sinh:</td>
                 <td>
-                    <input type="date" name="date_ns"
-                    value="<?php echo $ns ?>">
+                    <input type="date" name="date_ns" value="<?php echo $ns; ?>">
                 </td>
             </tr>
             <tr>
                 <td>Số điện thoại:</td>
                 <td>
-                    <input type="text" name="txt_sdt"
-                    value="<?php echo $sdt ?>">
+                    <input type="text" name="txt_sdt" value="<?php echo $sdt; ?>">
                 </td>
             </tr>
             <tr>

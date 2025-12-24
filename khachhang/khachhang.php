@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 align = "center">QUẢN LÝ KHÁCH HÀNG<h1>
+    <h1 align = "center">DANH SÁCH KHÁCH HÀNG<h1>
     <h2 align = "center"><a href="../trangchu.php">Trang chủ</a></h2>
     <?php
         $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
@@ -32,7 +32,7 @@
             <th>Tên khách hàng</th>
             <th>Địa chỉ</th>
             <th>Số điện thoại</th>
-            <th><a href="khachhang_add.php">Thêm khách hàng</a></th>
+            <!-- <th><a href="khachhang_add.php">Thêm khách hàng</a></th> -->
         </tr>
 
         <?php
@@ -44,17 +44,17 @@
                 <td><?php echo $tenkh[$i] ?></td>
                 <td><?php echo $diachi[$i] ?></td>
                 <td><?php echo $sdt[$i] ?></td>
-                <td> 
+                <!-- <td> 
                     <a href="khachhang_edit.php?makh=<?php echo $makh[$i] ?>">Sửa</a> |
                     <a href="khachhang_del.php?makh=<?php echo $makh[$i]; ?>" 
                        onclick="return confirm('Bạn có chắc muốn xóa khách hàng này?')">Xóa</a>
-                </td>
+                </td> -->
             </tr>
         <?php
         }
 	  ?>
       <tr>
-      <td colspan="10" align="right">Bảng có <?php echo $tong_bg?> nhân viên</td>
+      <td colspan="10" align="right">Bảng có <?php echo $tong_bg?> khách hàng</td>
       </tr>
     </table>
 </body>
