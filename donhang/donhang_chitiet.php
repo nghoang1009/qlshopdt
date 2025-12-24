@@ -76,7 +76,7 @@ session_start();
 
     <table width="900" align="center" border="1">
         <tr>
-            <td colspan="2"><strong>Thông tin đơn hàng</strong></td>
+            <th colspan="2"><strong>Thông tin đơn hàng</strong></th >
         </tr>
         <tr>
             <td width="200">Mã đơn hàng:</td>

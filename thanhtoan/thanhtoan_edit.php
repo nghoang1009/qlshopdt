@@ -34,6 +34,9 @@ $row = mysqli_fetch_assoc($result);
     <form method="post" action="thanhtoan_edit_save.php">
         <table align="center" border="1">
             <tr>
+                <td colspan="2">Thông tin thanh toán</td>
+            </tr>
+            <tr>
                 <td>Phương thức</td>
                 <td>
                     <select name="phuongthuc" required>

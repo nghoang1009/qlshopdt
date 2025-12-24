@@ -96,20 +96,19 @@ $role = -1;
                <li><a href="danhmuc/danhmuc.php"><i class="fa fa-list"></i> Danh mục</a></li>
                <li><a href="khachhang/khachhang.php"><i class="fa fa-user"></i> Khách hàng</a></li>' ?>
         <?php if($role == 1) 
-          echo "<li><a href='nhanvien/nhanvien.php'><i class='fa fa-users'></i> Nhân viên</a></li>" ?>
+          echo '<li><a href="nhanvien/nhanvien.php"><i class="fa fa-users"></i> Nhân viên</a></li>
+                <li class="dropdown">
+              <a href="#"><i class="fa fa-archive"></i> Thống kê</a>
+              <ul class="dropdown-menu">
+                <li><a href="thongke/thongke_doanhthu.php">Thống kê doanh thu</a></li>
+                <li><a href="thongke/thongke_khachhang.php">Thống kê khách hàng</a></li>
+                <li><a href="thongke/thongke_sanpham.php">Thống kê sản phẩm</a></li>
+              </ul>
+            </li>' ?>
         <li><a href="donhang/donhang.php"><i class="fa fa-archive"></i> Đơn hàng</a></li>
         <li><a href="vanchuyen/vanchuyen.php"><i class="fa fa-truck"></i> Giao hàng</a></li>
         <li><a href="giohang/giohang.php"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
         <li><a href="thanhtoan/thanhtoan.php"><i class="fa fa-shopping-cart"></i>Thanh toán</a></li>
-
-        <li class="dropdown">
-          <a href="#"><i class="fa fa-archive"></i> Thống kê</a>
-          <ul class="dropdown-content">
-            <li><a href="thongke/thongke_doanhthu.php">Thống kê doanh thu</a></li>
-            <li><a href="thongke/thongke_khachhang.php">Thống kê khách hàng</a></li>
-            <li><a href="thongke/thongke_sanpham.php">Thống kê sản phẩm</a></li>
-          </ul>
-        </li>
       </ul>
     </nav>
 

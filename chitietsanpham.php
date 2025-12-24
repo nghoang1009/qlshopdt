@@ -59,6 +59,9 @@ $matk = $row_tk['matk'];
                 
                 <table width="100%" border="0">
                     <tr>
+                        <th colspan="2">Thông tin sản phẩm</th>
+                    </tr>
+                    <tr>
                         <td><strong>Hãng:</strong></td>
                         <td><?php echo $row_sp['hang']; ?></td>
                     </tr>
@@ -77,10 +80,8 @@ $matk = $row_tk['matk'];
                         <td><?php echo $row_sp['sl']; ?> sản phẩm</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><strong>Ghi chú:</strong></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><?php echo $row_sp['ghichu']; ?></td>
+                        <td><strong>Ghi chú:</strong></td>
+                        <td><?php echo $row_sp['ghichu']; ?></td>
                     </tr>
                 </table>
                 
@@ -112,7 +113,7 @@ $matk = $row_tk['matk'];
         <!-- Phần thông số kỹ thuật -->
         <tr>
             <td colspan="2">
-                <h3>THÔNG SỐ KỸ THUẬT</h3>
+                <h2>THÔNG SỐ KỸ THUẬT</h2>
                 <table width="100%" border="1" cellpadding="8">
                     <tr>
                         <th width="200">Tên thông số</th>
@@ -137,11 +138,6 @@ $matk = $row_tk['matk'];
                     }
                     ?>
                 </table>
-                
-                <br>
-                <p align="center">
-                    <a href="trangchu.php">← Quay lại trang chủ</a>
-                </p>
             </td>
         </tr>
     </table>
