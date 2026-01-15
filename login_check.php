@@ -9,10 +9,12 @@
     <?php
     session_start();
 
+    require_once('database.php');
     $username = $_POST["txt_username"];
     $password = $_POST["txt_password"];
 
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     mysqli_set_charset($conn, "utf8");
 
     // Dùng Prepared Statement chống SQL Injection

@@ -7,12 +7,14 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     $makh = $_REQUEST["makh"];
     $tenkh = $_REQUEST["txt_tenkh"];
     $diachi = $_REQUEST["txt_diachi"];
     $sdt = $_REQUEST["txt_sdt"];
 
-    $conn=mysqli_connect("localhost","root","", "qlshopdienthoai") or die ("Không connect đc với máy chủ");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
 
     $sql_edit= "UPDATE `khachhang` SET `tenkh` = '$tenkh', `diachi` = '$diachi', `sdt` = '$sdt' 
                                   WHERE `khachhang`.`makh` = $makh;";

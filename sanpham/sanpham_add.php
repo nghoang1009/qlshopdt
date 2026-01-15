@@ -9,7 +9,9 @@
 <body>
     <h1 align = "center">THÊM SẢN PHẨM</h1>
     <?php
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+        require_once('../database.php');
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `sanpham`";
         
         $result = mysqli_query($conn,$sql_select);

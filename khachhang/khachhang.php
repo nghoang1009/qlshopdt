@@ -10,7 +10,9 @@
     <h1 align = "center">DANH SÁCH KHÁCH HÀNG<h1>
     <h2 align = "center"><a href="../trangchu.php">Trang chủ</a></h2>
     <?php
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+        require_once('../database.php');
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `khachhang`";
         $result = mysqli_query($conn,$sql_select);
         $tong_bg=mysqli_num_rows($result);

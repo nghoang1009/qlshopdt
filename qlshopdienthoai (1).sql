@@ -20,7 +20,9 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `qlshopdienthoai`
 --
-
+DROP DATABASE IF EXISTS qlshopdienthoai;
+CREATE DATABASE qlshopdienthoai;
+USE qlshopdienthoai;
 -- --------------------------------------------------------
 
 --

@@ -9,10 +9,10 @@
 <body>
     <h1 align = "center">SỬA SẢN PHẨM</h1>
     <?php
+        require_once('../database.php');
         $masp = $_REQUEST["masp"];
-        $conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
-        //Chọn CSDL để làm việc
-        mysqli_select_db($conn,"qlshopdienthoai") or die ("Không tìm thấy CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `sanpham` where `masp` = '$masp'";
         $result = mysqli_query($conn, $sql_select);
         $row = mysqli_fetch_object($result);

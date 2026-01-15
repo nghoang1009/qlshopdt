@@ -7,12 +7,14 @@
 </head>
 <body>
     <?php
+        require_once('../database.php');
         $mats = $_REQUEST["mats"];
         $tents = $_REQUEST["txt_tents"];
         $masp = $_REQUEST["masp"];
         $giatri = $_REQUEST["txt_giatri"];
 
-        $conn = mysqli_connect("localhost", "root", "") or die ("Khong the ket noi CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         mysqli_select_db($conn, "qlshopdienthoai");
 
         $sql_insert = "INSERT INTO `thongso` (`mats`, `tents`, `masp`, `giatri`) 

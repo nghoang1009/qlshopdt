@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     session_start();
     
     if (!isset($_SESSION['username'])) {
@@ -22,7 +23,8 @@
         exit();
     }
     
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
 
     $sql_delete = "DELETE FROM giohang_item WHERE maitem = '$maitem'";
     mysqli_query($conn, $sql_delete);

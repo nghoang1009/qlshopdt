@@ -9,8 +9,10 @@
 <body>
     <H1 align = "center">QUẢN LÝ DANH MỤC</H1>
     <h2 align = "center"><a href="../trangchu.php">Trang chủ</a></h2>
-    <?php 
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+    <?php
+        require_once('../database.php');
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `danhmuc`";
         $result = mysqli_query($conn,$sql_select);
         $tong_bg=mysqli_num_rows($result);

@@ -17,6 +17,7 @@ session_start();
     </h2>
     
     <?php
+        require_once('../database.php');
         if (!isset($_SESSION['username'])) {
             echo "<p align='center'>Vui lòng <a href='../login.php'>đăng nhập</a></p>";
             exit();
@@ -29,7 +30,8 @@ session_start();
             exit();
         }
 
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         mysqli_set_charset($conn, "utf8");
         
         // Lấy thông tin đơn hàng

@@ -14,13 +14,15 @@ session_start();
     <h2 align="center"><a href="../trangchu.php">Trang chủ</a></h2>
     
     <?php
+        require_once('../database.php');
         if (!isset($_SESSION['username'])) {
             echo "<p align='center'>Vui lòng <a href='../login.php'>đăng nhập</a> để xem giỏ hàng</p>";
             exit();
         }
 
         $username = $_SESSION['username'];
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         
         // Lấy mã khách hàng từ bảng khachhang thông qua taikhoan
         $sql_get_user = "SELECT kh.makh 

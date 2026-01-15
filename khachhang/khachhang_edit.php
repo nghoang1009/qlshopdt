@@ -9,8 +9,10 @@
 <body>
     <h1 align = "center">SỬA KHÁCH HÀNG</h1>
     <?php
+        require_once('../database.php');
         $makh = $_REQUEST["makh"];
-        $conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         //Chọn CSDL để làm việc
         mysqli_select_db($conn,"qlshopdienthoai") or die ("Không tìm thấy CSDL");
         $sql_select = "Select * from `khachhang` where `makh` = '$makh'";

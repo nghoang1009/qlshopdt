@@ -7,13 +7,15 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     session_start();
     if (!isset($_SESSION['username'])) {
         header("Location: ../login.php");
         exit();
     }
 
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     $username = $_SESSION['username'];
     $sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
     $result_role = mysqli_query($conn, $sql_role);

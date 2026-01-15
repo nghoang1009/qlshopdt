@@ -7,10 +7,12 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     $madm = $_REQUEST["madm"];
     $tendm = $_REQUEST["txt_tendm"];
 
-    $conn=mysqli_connect("localhost","root","", "qlshopdienthoai") or die ("Không connect đc với máy chủ");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
 
     $sql_edit= "UPDATE `danhmuc` SET `tendm` = '$tendm' WHERE `danhmuc`.`madm` = $madm;";
 

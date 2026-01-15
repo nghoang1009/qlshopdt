@@ -14,13 +14,15 @@ session_start();
     <h2 align="center"><a href="../trangchu.php">Trang chủ</a></h2>
     
     <?php
+        require_once('../database.php');
         if (!isset($_SESSION['username'])) {
             echo "<p align='center'>Vui lòng <a href='../login.php'>đăng nhập</a> để xem thông tin vận chuyển</p>";
             exit();
         }
 
         $username = $_SESSION['username'];
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         mysqli_set_charset($conn, "utf8");
         
         // Lấy role của user

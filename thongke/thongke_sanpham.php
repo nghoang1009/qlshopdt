@@ -1,11 +1,13 @@
 <?php
+require_once('../database.php');
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: ../login.php");
     exit();
 }
 
-$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối database");
 
 $thang = isset($_GET['thang']) ? $_GET['thang'] : date('m');
 $nam = isset($_GET['nam']) ? $_GET['nam'] : date('Y');
