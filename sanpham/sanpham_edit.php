@@ -61,7 +61,7 @@
                         }
                     }
                     ?>
-                    <option selected="selected">
+                    <option selected="selected" value="<?php echo $madm ?>">
                         <?php echo $tendm[array_search($madm, $iddm)] ?>
                     </option>
                 </select>

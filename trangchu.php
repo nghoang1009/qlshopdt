@@ -74,7 +74,7 @@ $role = -1;
               </div>
               <a href="profile.php">Thông tin cá nhân</a>
               <a href="donhang/donhang.php">Đơn hàng của tôi</a>
-              <a href="settings.php">Cài đặt</a>
+              
               <a href="logout.php" class="logout">Đăng xuất</a>
             </div>
           </div>
