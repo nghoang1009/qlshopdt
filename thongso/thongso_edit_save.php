@@ -19,7 +19,7 @@
     $sql_edit= "UPDATE `thongso` SET `tents` = '$tents', `masp` = '$masp', `giatri` = '$giatri' WHERE `thongso`.`mats` = $mats;";
 
     mysqli_query($conn,$sql_edit) or die("Query unsucessful");
-    header("Location: thongso.php");
+    header("Location: thongso.php?masp=$masp");
     ?>
 </body>
 </html>

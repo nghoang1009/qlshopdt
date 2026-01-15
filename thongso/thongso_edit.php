@@ -44,7 +44,7 @@
         }
     ?>
 
-    <form method="post" action="thongso_edit_save.php" enctype="multipart/form-data">        
+    <form method="post" action="thongso_edit_save.php?masp=<?php echo $masp ?>" enctype="multipart/form-data">        
         <table align="center" border="1">
             <tr>
                 <td colspan="2" align="center">Sửa thông số</td>
