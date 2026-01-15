@@ -39,7 +39,7 @@
         }
     ?>
 
-    <form method="post" action="sanpham_edit_save.php?masp= <?php echo $masp ?>" enctype="multipart/form-data">        
+    <form method="post" action="sanpham_edit_save.php?masp=<?php echo $masp ?>" enctype="multipart/form-data">        
         <table align="center" border="1">
             <tr>
                 <td colspan="2" align="center">Thông tin sản phẩm</td>
@@ -52,13 +52,18 @@
                     <?php
                     for ($i=1; $i<=$tong_bg; $i++)
                     {
+                        if ($i != array_search($madm, $iddm)) {
                     ?>
                         <option value="<?php echo $iddm[$i] ?>">
                             <?php echo $tendm[$i]?>
                         </option>
                     <?php
+                        }
                     }
                     ?>
+                    <option selected="selected">
+                        <?php echo $tendm[array_search($madm, $iddm)] ?>
+                    </option>
                 </select>
             </td>
             </tr>
