@@ -8,9 +8,11 @@
 </head>
 <body>
     <h1 align = "center">THÔNG SỐ SẢN PHẨM</h1>
-    <?php  
+    <?php
+        require_once('../database.php');
         $mats = $_REQUEST["mats"];
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `thongso` where mats='$mats'";
         $result = mysqli_query($conn,$sql_select);
         $tong_bg_ts=mysqli_num_rows($result);

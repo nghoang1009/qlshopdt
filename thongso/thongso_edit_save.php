@@ -7,12 +7,14 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     $mats = $_REQUEST["mats"];
     $tents = $_REQUEST["txt_tents"];
     $masp = $_REQUEST["masp"];
     $giatri = $_REQUEST["txt_giatri"];
 
-    $conn=mysqli_connect("localhost","root","", "qlshopdienthoai") or die ("Không connect đc với máy chủ");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
 
     $sql_edit= "UPDATE `thongso` SET `tents` = '$tents', `masp` = '$masp', `giatri` = '$giatri' WHERE `thongso`.`mats` = $mats;";
 

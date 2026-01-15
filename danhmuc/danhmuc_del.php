@@ -7,10 +7,10 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
 	$madm = $_REQUEST["madm"];
-	$conn=mysqli_connect("localhost","root","") or die ("Không connect đc với máy chủ");
-    //Chọn CSDL để làm việc
-    mysqli_select_db($conn,"qlshopdienthoai") or die ("Không tìm thấy CSDL");
+	$db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     //Tạo câu truy vấn
     $sql_del_hangxs="DELETE FROM danhmuc WHERE `danhmuc`.`madm` = $madm";
 	mysqli_query($conn,$sql_del_hangxs);

@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+        require_once('../database.php');
         $masp = $_REQUEST["masp"];
         $tensp = $_REQUEST["txt_tensp"];
         $gia = $_REQUEST["num_gia"];
@@ -24,8 +25,8 @@
         $file__name__=$dmyhis.$file_name;
         copy($file_tmp, $uploadDir_img_hinhanh.$file__name__);
 
-        $conn = mysqli_connect("localhost", "root", "") or die ("Khong the ket noi CSDL");
-        mysqli_select_db($conn, "qlshopdienthoai");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
 
         $sql_insert = "INSERT INTO `sanpham` (`masp`, `tensp`, `gia`, `sl`, `hang`, `baohanh`, `ghichu`, `hinhanh`, `madm`) 
                        VALUES (NULL, '$tensp', '$gia', '$sl', '$hang', '$baohanh', '$ghichu', '$file__name__', '$madm');";

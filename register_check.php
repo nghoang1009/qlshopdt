@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    require_once('database.php');
     $username = $_POST["txt_username"];
     $password = $_POST["txt_password"];
     $repassword = $_POST["txt_repassword"];
@@ -18,7 +19,8 @@
         exit();
     }
 
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối tới database");
     mysqli_set_charset($conn, "utf8");
 
     // Kiểm tra tài khoản đã tồn tại chưa

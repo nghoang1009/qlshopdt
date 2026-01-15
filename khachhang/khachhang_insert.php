@@ -7,12 +7,14 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     $makh = $_REQUEST["makh"];
     $tenkh = $_REQUEST["txt_tenkh"];
     $diachi = $_REQUEST["txt_diachi"];
     $sdt = $_REQUEST["txt_sdt"];
 
-    $conn = mysqli_connect("localhost", "root", "") or die ("Khong the ket noi CSDL");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     mysqli_select_db($conn, "qlshopdienthoai");
 
     $sql_create_tk = "INSERT INTO taikhoan VALUES (null, '$tenkh', '123456', '0')";

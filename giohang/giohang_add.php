@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php
+        require_once('../database.php');
         session_start();
         
         if (!isset($_SESSION['username'])) {
@@ -23,7 +24,8 @@
             exit();
         }
 
-        $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
 
         $sql_select = "SELECT sp.masp, sp.tensp, sp.gia, sp.sl, sp.hang, sp.hinhanh, sp.madm, dm.tendm 
                        FROM sanpham sp

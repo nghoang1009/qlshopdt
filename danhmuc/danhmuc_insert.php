@@ -7,10 +7,12 @@
 </head>
 <body>
     <?php
+        require_once('../database.php');
         $madm = $_REQUEST["madm"];
         $tendm = $_REQUEST["txt_tendm"];
 
-        $conn = mysqli_connect("localhost", "root", "") or die ("Khong the ket noi CSDL");
+        $db = new DB();
+        $conn = $db->getConnection() or die("Không thể kết nối database");
         mysqli_select_db($conn, "qlshopdienthoai");
 
         $sql_insert = "INSERT INTO `danhmuc` (`madm`, `tendm`) VALUES (NULL, '$tendm');";

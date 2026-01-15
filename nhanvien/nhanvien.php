@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 // Kiểm tra đăng nhập
@@ -9,7 +10,8 @@ if (!isset($_SESSION['username'])) {
 
 // Lấy thông tin role
 $username = $_SESSION['username'];
-$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối database");
 $sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
 $result_role = mysqli_query($conn, $sql_role);
 $row_role = mysqli_fetch_assoc($result_role);

@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     session_start();
     
     if (!isset($_SESSION['username'])) {
@@ -15,7 +16,8 @@
     }
     
     $username = $_SESSION['username'];
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
 
     $sql_get_user = "SELECT kh.makh 
                      FROM taikhoan tk

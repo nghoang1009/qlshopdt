@@ -15,11 +15,13 @@ session_start();
 <body>
 
 <?php
+require_once('database.php');
 $role = -1;
   if (isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $sql = "Select * from taikhoan Where tentk = '$username'";
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die ("Khong the ket noi CSDL");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     $result = mysqli_query($conn, $sql);
 
     if ($result)

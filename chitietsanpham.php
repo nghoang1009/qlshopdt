@@ -1,10 +1,12 @@
 <?php
+require_once('database.php');
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
-$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối database");
 $masp = isset($_REQUEST["masp"]) ? $_REQUEST["masp"] : 0;
 
 $sql_sp = "SELECT * FROM sanpham WHERE masp = '$masp'";

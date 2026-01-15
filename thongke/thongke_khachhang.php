@@ -1,11 +1,13 @@
 <?php
+require_once('../database.php');
 session_start();
 if (!isset($_SESSION['username'])) {
     header("Location: ../login.php");
     exit();
 }
 
-$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối database");
 
 $sql_tk = "SELECT 
             kh.makh, kh.tenkh, kh.sdt,

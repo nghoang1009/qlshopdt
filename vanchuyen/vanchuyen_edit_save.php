@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+    require_once('../database.php');
     session_start();
 
     if (!isset($_SESSION['username'])) {
@@ -23,7 +24,8 @@
         exit();
     }
 
-    $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
+    $db = new DB();
+    $conn = $db->getConnection() or die("Không thể kết nối database");
     mysqli_set_charset($conn, "utf8");
 
     $sql_update = "UPDATE vanchuyen SET ngaygiao = '$ngaygiao' WHERE mavc = '$mavc'";

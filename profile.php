@@ -8,6 +8,7 @@
 <body>
     <?php
 session_start();
+require_once('database.php');
 
 // Kiểm tra đăng nhập
 if (!isset($_SESSION['username'])) {
@@ -16,7 +17,8 @@ if (!isset($_SESSION['username'])) {
 }
 
 $username = $_SESSION['username'];
-$conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai") or die("Không thể kết nối CSDL");
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối tới database");
 
 // Lấy thông tin tài khoản
 $sql = "SELECT * FROM taikhoan WHERE tentk = '$username'";
