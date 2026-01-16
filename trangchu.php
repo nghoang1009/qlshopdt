@@ -138,7 +138,6 @@ $role = -1;
       
       <div class="product-grid">
           <?php
-          $conn = mysqli_connect("localhost", "root", "", "qlshopdienthoai");
           
           // Xử lý tìm kiếm
           if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
