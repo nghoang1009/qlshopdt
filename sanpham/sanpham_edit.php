@@ -15,27 +15,27 @@
         $conn = $db->getConnection() or die("Không thể kết nối database");
         $sql_select = "Select * from `sanpham` where `masp` = '$masp'";
         $result = mysqli_query($conn, $sql_select);
-        $row = mysqli_fetch_object($result);
+        $row = mysqli_fetch_assoc($result);
 
-        $masp = $row->masp;
-        $tensp = $row->tensp;
-        $gia = $row->gia;
-        $sl = $row->sl;
-        $hang = $row->hang;
-        $baohanh = $row->baohanh;
-        $ghichu = $row->ghichu;
-        $hinhanh = $row->hinhanh;
-        $madm = $row->madm;
+        $masp = $row['masp'];
+        $tensp = $row['tensp'];
+        $gia = $row['gia'];
+        $sl = $row['sl'];
+        $hang = $row['hang'];
+        $baohanh = $row['baohanh'];
+        $ghichu = $row['ghichu'];
+        $hinhanh = $row['hinhanh'];
+        $madm = $row['madm'];
 
         $sql_get_dm = "Select madm, tendm from danhmuc";
         $result = mysqli_query($conn, $sql_get_dm);
         $tong_bg = mysqli_num_rows($result);
 
         $stt = 0;
-        while ($row = mysqli_fetch_object($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $stt++;
-            $iddm[$stt] = $row->madm;
-            $tendm[$stt] = $row->tendm;
+            $iddm[$stt] = $row['madm'];
+            $tendm[$stt] = $row['tendm'];
         }
     ?>
 
@@ -106,7 +106,6 @@
                 <td>Hình ảnh</td>
                 <td>
                     <input type="file" name="img_hinhanh">
-                    <img src="../img/<?php echo $hinhanh ?>" width="100">
                 </td>
             </tr>
             <tr>
