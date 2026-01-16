@@ -1,0 +1,31 @@
+.filters {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 2vh;
+    width: 19%;
+}
+
+#dayChecked:checked ~ #day {
+    visibility: visible;
+}
+
+#day {
+    visibility: hidden;
+}
+
+#monthChecked:checked ~ #month {
+    visibility: visible;
+}
+
+#month {
+    visibility: hidden;
+}
+
+#yearChecked:checked ~ #year {
+    visibility: visible;
+}
+
+#year {
+    visibility: hidden;
+}
