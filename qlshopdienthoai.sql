@@ -122,7 +122,6 @@ CREATE TABLE vanchuyen (
 -- Dữ liệu mẫu
 INSERT INTO danhmuc (tendm) VALUES 
 ('Điện thoại'),
-('Phụ kiện'),
 ('Laptop'),
 ('Tai nghe'),
 ('Sạc dự phòng');
@@ -135,8 +134,8 @@ INSERT INTO taikhoan (tentk, mk, role) VALUES
 ('tranthib', '123456', 0),
 ('phamvanc', '123456', 0),
 ('lethid', '123456', 0),
-('manager1', '123456', 2),
-('manager2', '123456', 2);
+('nhanvien1', '123456', 2),
+('nhanvien2', '123456', 2);
 
 INSERT INTO khachhang (makh, tenkh, diachi, sdt) VALUES
 (3, 'theanh', 'a', '1'),
@@ -166,7 +165,7 @@ INSERT INTO sanpham (tensp, gia, sl, hang, baohanh, ghichu, hinhanh, madm) VALUE
 ('OPPO Find N3 Flip', 24990000, 25, 'OPPO', 12, 'OPPO Find N3 Flip 256GB - Hồng', 'oppo-find-n3-flip-hong.jpg.webp', 1),
 ('OPPO Reno 14', 10990000, 90, 'OPPO', 12, 'OPPO Reno 14 5G 256GB - Tím', 'oppo-reno14-pro-tim.jpg.webp', 1),
 ('Vivo Y29', 9990000, 70, 'Vivo', 12, 'Vivo Y29 256GB - Trắng', 'vivo-y29-trang.jpg.webp', 1),
-('Realme 11', 8990000, 85, 'Realme', 12, 'Realme 11 256GB - Vàng', 'img/realme-11-vang.jpg.webp', 1),
+('Realme 11', 8990000, 85, 'Realme', 12, 'Realme 11 256GB - Vàng', 'realme-11-vang.jpg.webp', 1),
 ('Realme 14 Pro Plus', 23990000, 35, 'Google', 12, 'Realme Pro Plus 256GB - Trắng mạ vàng', 'realme-14-pro-plus-trang-ma-vang.jpg.webp', 1),
 ('Realme 9 Pro Plus', 5990000, 65, 'Nokia', 12, 'Realme 9 Pro Plus 128GB - Xanh bình minh', 'realme-9-pro-plus-xanh-binh-minh.jpg.webp', 1),
 ('Realme GT5', 19990000, 45, 'OnePlus', 12, 'Realme GT5 256GB - Xanh Lá', 'realme-gt5-xanh.jpg.webp', 1);
