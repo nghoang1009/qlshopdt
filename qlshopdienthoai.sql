@@ -47,7 +47,7 @@ CREATE TABLE sanpham (
   ghichu VARCHAR(255) NOT NULL,
   hinhanh VARCHAR(255) NOT NULL,
   madm INT NOT NULL,
-  FOREIGN KEY (madm) REFERENCES danhmuc(madm)
+  FOREIGN KEY (madm) REFERENCES danhmuc(madm) ON DELETE CASCADE
 );
 
 -- Bảng thông số
@@ -63,7 +63,7 @@ CREATE TABLE thongso (
 CREATE TABLE giohang (
   magio INT AUTO_INCREMENT PRIMARY KEY,
   makh INT NOT NULL,
-  FOREIGN KEY (makh) REFERENCES khachhang(makh)
+  FOREIGN KEY (makh) REFERENCES khachhang(makh) ON DELETE CASCADE
 );
 
 -- Bảng giỏ hàng item
@@ -72,8 +72,8 @@ CREATE TABLE giohang_item (
   magio INT NOT NULL,
   masp INT NOT NULL,
   sl INT NOT NULL,
-  FOREIGN KEY (magio) REFERENCES giohang(magio),
-  FOREIGN KEY (masp) REFERENCES sanpham(masp)
+  FOREIGN KEY (magio) REFERENCES giohang(magio) ON DELETE CASCADE,
+  FOREIGN KEY (masp) REFERENCES sanpham(masp) ON DELETE CASCADE
 );
 
 -- Bảng đơn hàng
