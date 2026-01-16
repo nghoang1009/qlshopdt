@@ -47,7 +47,7 @@ CREATE TABLE sanpham (
   ghichu VARCHAR(255) NOT NULL,
   hinhanh VARCHAR(255) NOT NULL,
   madm INT NOT NULL,
-  FOREIGN KEY (madm) REFERENCES danhmuc(madm)
+  FOREIGN KEY (madm) REFERENCES danhmuc(madm) ON DELETE CASCADE
 );
 
 -- Bảng thông số
@@ -63,7 +63,7 @@ CREATE TABLE thongso (
 CREATE TABLE giohang (
   magio INT AUTO_INCREMENT PRIMARY KEY,
   makh INT NOT NULL,
-  FOREIGN KEY (makh) REFERENCES khachhang(makh)
+  FOREIGN KEY (makh) REFERENCES khachhang(makh) ON DELETE CASCADE
 );
 
 -- Bảng giỏ hàng item
@@ -72,15 +72,15 @@ CREATE TABLE giohang_item (
   magio INT NOT NULL,
   masp INT NOT NULL,
   sl INT NOT NULL,
-  FOREIGN KEY (magio) REFERENCES giohang(magio),
-  FOREIGN KEY (masp) REFERENCES sanpham(masp)
+  FOREIGN KEY (magio) REFERENCES giohang(magio) ON DELETE CASCADE,
+  FOREIGN KEY (masp) REFERENCES sanpham(masp) ON DELETE CASCADE
 );
 
 -- Bảng đơn hàng
 CREATE TABLE donhang (
   madh INT AUTO_INCREMENT PRIMARY KEY,
   makh INT NOT NULL,
-  ngaydat DATE NOT NULL,
+  ngaydat DATETIME NOT NULL,
   manv INT NOT NULL,
   trigia DOUBLE NOT NULL,
   FOREIGN KEY (makh) REFERENCES khachhang(makh) ON DELETE CASCADE,
@@ -213,8 +213,15 @@ INSERT INTO donhang (makh, ngaydat, manv, trigia) VALUES
 (3, '2025-12-24', 2, 206490000),
 (4, '2025-01-10', 8, 49980000),
 (5, '2025-01-12', 8, 27990000),
-(6, '2025-01-14', 9, 39980000),
-(7, '2025-01-15', 9, 17990000);
+(6, '2026-01-14', 9, 39980000),
+(7, '2026-01-15', 9, 17990000),
+(4, '2026-01-16', 8, 35990000),
+(5, '2026-01-17', 9, 44980000),
+(6, '2025-06-18', 8, 19990000),
+(7, '2025-07-19', 9, 52980000),
+(3, '2025-08-20', 2, 33980000),
+(4, '2025-09-21', 8, 9990000),
+(5, '2025-10-22', 9, 48980000);
 
 INSERT INTO chitietdonhang (madh, masp, sl) VALUES
 (1, 1, 1),
@@ -228,7 +235,20 @@ INSERT INTO chitietdonhang (madh, masp, sl) VALUES
 (5, 8, 1),
 (6, 7, 1),
 (6, 10, 1),
-(7, 12, 2);
+(7, 12, 2),
+(8, 9, 1),
+(9, 5, 1),
+(9, 12, 2),
+(10, 6, 1),
+(11, 7, 1),
+(11, 8, 1),
+(12, 11, 1),
+(12, 10, 1),
+(12, 16, 1),
+(13, 10, 1),
+(14, 13, 1),
+(14, 14, 2),
+(14, 15, 1);
 
 INSERT INTO vanchuyen (madh, makh, ngaygiao) VALUES
 (2, 3, '2025-12-26'),
@@ -239,4 +259,18 @@ INSERT INTO vanchuyen (madh, makh, ngaygiao) VALUES
 INSERT INTO thanhtoan (madh, phuongthuc, ngaythanhtoan, sotien, trangthai, ghichu) VALUES
 (4, 'Chuyển khoản', '2025-01-10 14:30:00', 49980000, 'Đã thanh toán', 'Thanh toán qua VietQR'),
 (5, 'Tiền mặt', '2025-01-12 10:15:00', 27990000, 'Đã thanh toán', 'Thanh toán khi nhận hàng'),
-(6, 'Thẻ', '2025-01-14 16:45:00', 39980000, 'Đã thanh toán', 'Thanh toán bằng thẻ Visa');
+(6, 'Thẻ', '2025-01-14 16:45:00', 39980000, 'Đã thanh toán', 'Thanh toán bằng thẻ Visa'),
+(1, 'Chuyển khoản', '2025-12-24 09:20:00', 39690000, 'Đã thanh toán', 'Thanh toán qua MoMo'),
+(2, 'Tiền mặt', '2025-12-24 11:45:00', 15000000, 'Đã thanh toán', 'Thanh toán tại cửa hàng'),
+(3, 'Ví điện tử', '2025-12-24 15:30:00', 206490000, 'Đã thanh toán', 'Thanh toán qua ZaloPay'),
+(7, 'Chuyển khoản', '2026-01-15 13:25:00', 17990000, 'Đã thanh toán', 'Thanh toán qua VietQR'),
+(8, 'Ví điện tử', '2026-01-16 10:30:00', 35990000, 'Đã thanh toán', 'Thanh toán qua MoMo'),
+(9, 'Thẻ', '2026-01-17 14:15:00', 44980000, 'Đã thanh toán', 'Thanh toán bằng thẻ Mastercard'),
+(10, 'Chuyển khoản', '2025-02-18 09:45:00', 19990000, 'Đã thanh toán', 'Thanh toán qua VietQR'),
+(11, 'Tiền mặt', '2025-04-19 16:20:00', 52980000, 'Đã thanh toán', 'Thanh toán khi nhận hàng'),
+(12, 'Ví điện tử', '2025-11-20 11:00:00', 33980000, 'Đã thanh toán', 'Thanh toán qua ZaloPay'),
+(13, 'Chuyển khoản', '2025-7-21 15:30:00', 9990000, 'Chờ xác nhận', 'Đang chờ xác nhận giao dịch'),
+(14, 'Thẻ', '2025-10-22 10:45:00', 48980000, 'Đã thanh toán', 'Thanh toán bằng thẻ Visa'),
+(4, 'Ví điện tử', '2026-01-10 17:00:00', 49980000, 'Chờ xác nhận', 'Đang xử lý thanh toán qua ShopeePay'),
+(5, 'Thẻ', '2026-01-12 12:30:00', 27990000, 'Thất bại', 'Giao dịch bị từ chối - Thẻ hết hạn'),
+(6, 'Tiền mặt', '2026-01-14 18:00:00', 39980000, 'Chờ xác nhận', 'Chờ khách hàng thanh toán khi nhận hàng');

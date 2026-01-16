@@ -21,9 +21,9 @@
         $file_tmp = isset($_FILES['img_hinhanh']['tmp_name']) ? $_FILES['img_hinhanh']['tmp_name'] : ""; 
         $file_name = isset($_FILES['img_hinhanh']['name']) ? $_FILES['img_hinhanh']['name'] : ""; 
 
-        $dmyhis = date("Y").date("m").date("d").date("H").date("i").date("s");
-        $file__name__=$dmyhis.$file_name;
-        copy($file_tmp, $uploadDir_img_hinhanh.$file__name__);
+        $datetime = date("Y-m-d_H:i:s_");
+        $file__name = $datetime . $file_name;
+        copy($file_tmp, $uploadDir_img_hinhanh.$file__name);
 
         $db = new DB();
         $conn = $db->getConnection() or die("Không thể kết nối database");

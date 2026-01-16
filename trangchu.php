@@ -94,7 +94,7 @@ $role = -1;
     <nav class="header-bottom">
       <ul class="nav-menu">
         <?php if($role == 1 || $role == 2) 
-          echo '<li><a href="sanpham/sanpham.php"><i class="fa fa-mobile" aria-hidden="true"></i> Điện thoại</a></li>
+          echo '<li><a href="sanpham/sanpham.php"><i class="fa fa-mobile" aria-hidden="true"></i> Sản phẩm</a></li>
                <li><a href="danhmuc/danhmuc.php"><i class="fa fa-list"></i> Danh mục</a></li>
                <li><a href="khachhang/khachhang.php"><i class="fa fa-user"></i> Khách hàng</a></li>' ?>
         <?php if($role == 1) 

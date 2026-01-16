@@ -11,9 +11,17 @@
 	$masp = $_REQUEST["masp"];
 	$db = new DB();
     $conn = $db->getConnection() or die("Không thể kết nối database");
-    //Tạo câu truy vấn
+
+    $getImageSQL = "Select hinhanh from sanpham where masp = $masp";
+    $result = mysqli_query($conn, $getImageSQL) or die("Lỗi khi tìm ảnh");
+    $row = mysqli_fetch_assoc($result);
+    $image = $row["hinhanh"];
+
     $sql_del_hangxs="DELETE FROM sanpham WHERE `sanpham`.`masp` = $masp";
-	mysqli_query($conn,$sql_del_hangxs);
+	mysqli_query($conn,$sql_del_hangxs) or die ("Lỗi khi xóa sản phẩm");
+
+    unlink("../img/" . $image) or die("Xóa ảnh $image không thành công");
+
 	header("Location: sanpham.php");
 	?>
 </body>

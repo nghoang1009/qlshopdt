@@ -27,6 +27,9 @@
     if (mysqli_num_rows($result) > 0) {
         // Lưu username vào session
         $_SESSION['username'] = $username;
+
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['userid'] = $row['matk'];
         
         header("Location: trangchu.php");
         exit();
