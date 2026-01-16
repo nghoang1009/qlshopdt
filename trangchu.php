@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Trang chủ</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/avt.css">
     <link rel="stylesheet" href="css/giohang.css">
@@ -99,14 +99,7 @@ $role = -1;
                <li><a href="khachhang/khachhang.php"><i class="fa fa-user"></i> Khách hàng</a></li>' ?>
         <?php if($role == 1) 
           echo '<li><a href="nhanvien/nhanvien.php"><i class="fa fa-users"></i> Nhân viên</a></li>
-                <li class="dropdown">
-              <a href="#"><i class="fa fa-archive"></i> Thống kê</a>
-              <ul class="dropdown-menu">
-                <li><a href="thongke/thongke_doanhthu.php">Thống kê doanh thu</a></li>
-                <li><a href="thongke/thongke_khachhang.php">Thống kê khách hàng</a></li>
-                <li><a href="thongke/thongke_sanpham.php">Thống kê sản phẩm</a></li>
-              </ul>
-            </li>' ?>
+                <li><a href="thongke.php"><i class="fa fa-archive"></i> Thống kê</a></li>' ?>
         <li><a href="donhang/donhang.php"><i class="fa fa-archive"></i> Đơn hàng</a></li>
         <li><a href="vanchuyen/vanchuyen.php"><i class="fa fa-truck"></i> Giao hàng</a></li>
         <li><a href="giohang/giohang.php"><i class="fa fa-shopping-cart"></i> Giỏ hàng</a></li>
