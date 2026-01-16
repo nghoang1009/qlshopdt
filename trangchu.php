@@ -16,12 +16,12 @@ session_start();
 
 <?php
 require_once('database.php');
+$db = new DB();
+$conn = $db->getConnection() or die("Không thể kết nối database");
 $role = -1;
   if (isset($_SESSION['username'])){
     $username = $_SESSION['username'];
     $sql = "Select * from taikhoan Where tentk = '$username'";
-    $db = new DB();
-    $conn = $db->getConnection() or die("Không thể kết nối database");
     $result = mysqli_query($conn, $sql);
 
     if ($result)
