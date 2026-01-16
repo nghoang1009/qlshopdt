@@ -119,53 +119,6 @@ CREATE TABLE vanchuyen (
   FOREIGN KEY (makh) REFERENCES khachhang(makh) ON DELETE CASCADE
 );
 
--- Bảng thống kê doanh thu
-CREATE TABLE thongke_doanhthu (
-  matk INT AUTO_INCREMENT PRIMARY KEY,
-  ngay DATE NOT NULL UNIQUE,
-  tongsodh INT NOT NULL DEFAULT 0 COMMENT 'Tổng số đơn hàng',
-  tongdoanhthu DOUBLE NOT NULL DEFAULT 0 COMMENT 'Tổng doanh thu',
-  tongkhachhang INT NOT NULL DEFAULT 0 COMMENT 'Tổng khách hàng mua',
-  ghichu VARCHAR(255)
-);
-
--- Bảng thống kê khách hàng
-CREATE TABLE thongke_khachhang (
-  matk INT AUTO_INCREMENT PRIMARY KEY,
-  makh INT NOT NULL UNIQUE,
-  tongsodh INT NOT NULL DEFAULT 0 COMMENT 'Tổng số đơn hàng',
-  tongchitieu DOUBLE NOT NULL DEFAULT 0 COMMENT 'Tổng chi tiêu',
-  lanmuagannhat DATE,
-  ghichu VARCHAR(255),
-  FOREIGN KEY (makh) REFERENCES khachhang(makh) ON DELETE CASCADE
-);
-
--- Bảng thống kê nhân viên
-CREATE TABLE thongke_nhanvien (
-  matk INT AUTO_INCREMENT PRIMARY KEY,
-  manv INT NOT NULL,
-  thang INT NOT NULL,
-  nam INT NOT NULL,
-  sodhxuly INT NOT NULL DEFAULT 0 COMMENT 'Số đơn hàng xử lý',
-  doanhthu DOUBLE NOT NULL DEFAULT 0 COMMENT 'Doanh thu từ đơn hàng xử lý',
-  ghichu VARCHAR(255),
-  UNIQUE KEY (manv, thang, nam),
-  FOREIGN KEY (manv) REFERENCES nhanvien(manv) ON DELETE CASCADE
-);
-
--- Bảng thống kê sản phẩm
-CREATE TABLE thongke_sanpham (
-  matk INT AUTO_INCREMENT PRIMARY KEY,
-  masp INT NOT NULL,
-  thang INT NOT NULL,
-  nam INT NOT NULL,
-  soluongban INT NOT NULL DEFAULT 0,
-  doanhthu DOUBLE NOT NULL DEFAULT 0,
-  ghichu VARCHAR(255),
-  UNIQUE KEY (masp, thang, nam),
-  FOREIGN KEY (masp) REFERENCES sanpham(masp) ON DELETE CASCADE
-);
-
 -- Dữ liệu mẫu
 INSERT INTO danhmuc (tendm) VALUES 
 ('Điện thoại'),
