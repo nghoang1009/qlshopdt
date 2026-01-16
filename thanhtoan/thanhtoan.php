@@ -12,6 +12,7 @@ $conn = $db->getConnection() or die("Không thể kết nối database");
 $sql_role = "SELECT role FROM taikhoan WHERE tentk = '$username'";
 $result_role = mysqli_query($conn, $sql_role);
 $row_role = mysqli_fetch_assoc($result_role);
+$userid = $_SESSION['userid'];
 $role = $row_role['role'];
 
 $isAdminOrStaff = ($role == 1 || $role == 2);
@@ -33,23 +34,29 @@ $isAdminOrStaff = ($role == 1 || $role == 2);
                    FROM thanhtoan tt
                    JOIN donhang dh ON tt.madh = dh.madh
                    JOIN khachhang kh ON dh.makh = kh.makh
-                   JOIN nhanvien nv ON dh.manv = nv.manv
-                   ORDER BY tt.ngaythanhtoan DESC";
+                   JOIN nhanvien nv ON dh.manv = nv.manv";
+
+    if ($role == 0) // Nếu là khách hàng
+        $sql_select = $sql_select . ' ' . "WHERE kh.makh = $userid";
+
+    $sql_select = $sql_select . ' ' . "ORDER BY tt.ngaythanhtoan DESC";
+
+
     $result = mysqli_query($conn, $sql_select);
     $tong_bg = mysqli_num_rows($result);
 
     $stt = 0;
-    while($row = mysqli_fetch_object($result)) {
+    while($row = mysqli_fetch_assoc($result)) {
         $stt++;
-        $matt[$stt] = $row->matt;
-        $madh[$stt] = $row->madh;
-        $phuongthuc[$stt] = $row->phuongthuc;
-        $ngaythanhtoan[$stt] = $row->ngaythanhtoan;
-        $sotien[$stt] = $row->sotien;
-        $trangthai[$stt] = $row->trangthai;
-        $ghichu[$stt] = $row->ghichu;
-        $tenkh[$stt] = $row->tenkh;
-        $tennv[$stt] = $row->tennv;
+        $matt[$stt] = $row['matt'];
+        $madh[$stt] = $row['madh'];
+        $phuongthuc[$stt] = $row['phuongthuc'];
+        $ngaythanhtoan[$stt] = $row['ngaythanhtoan'];
+        $sotien[$stt] = $row['sotien'];
+        $trangthai[$stt] = $row['trangthai'];
+        $ghichu[$stt] = $row['ghichu'];
+        $tenkh[$stt] = $row['tenkh'];
+        $tennv[$stt] = $row['tennv'];
     }
     ?>
 
