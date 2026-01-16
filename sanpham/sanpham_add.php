@@ -12,25 +12,6 @@
         require_once('../database.php');
         $db = new DB();
         $conn = $db->getConnection() or die("Không thể kết nối database");
-        $sql_select = "Select * from `sanpham`";
-        
-        $result = mysqli_query($conn,$sql_select);
-        $tong_bg=mysqli_num_rows($result);
-
-        $stt = 0;
-        while($row = mysqli_fetch_object($result))
-        {
-            $stt++;
-            $masp[$stt] = $row->masp;
-            $tensp[$stt] = $row->tensp;
-            $gia[$stt] = $row->gia;
-            $sl[$stt] = $row->sl;
-            $hang[$stt] = $row->hang;
-            $baohanh[$stt] = $row->baohanh;
-            $ghichu[$stt] = $row->ghichu;
-            $hinhanh[$stt] = $row->hinhanh;
-            $madm[$stt] = $row->madm;
-        }
 
         $sql_select_dm = "Select * from `danhmuc`";
         $result_dm = mysqli_query($conn,$sql_select_dm);
